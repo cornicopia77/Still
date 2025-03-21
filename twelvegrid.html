@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Grid Submission</title>
+    <style>
+        /* Styling for the container to align the images in a grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .grid-item {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .image-inputs {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .image-label {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .image-preview {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Submit Your 12 Images</h2>
+
+    <div class="image-inputs">
+        <!-- Input fields for image submission -->
+        <label for="image1" class="image-label">Choose Image 1</label>
+        <input type="file" id="image1" accept="image/*" onchange="previewImage(event, 1)">
+        <label for="image2" class="image-label">Choose Image 2</label>
+        <input type="file" id="image2" accept="image/*" onchange="previewImage(event, 2)">
+        <label for="image3" class="image-label">Choose Image 3</label>
+        <input type="file" id="image3" accept="image/*" onchange="previewImage(event, 3)">
+        <label for="image4" class="image-label">Choose Image 4</label>
+        <input type="file" id="image4" accept="image/*" onchange="previewImage(event, 4)">
+        <label for="image5" class="image-label">Choose Image 5</label>
+        <input type="file" id="image5" accept="image/*" onchange="previewImage(event, 5)">
+        <label for="image6" class="image-label">Choose Image 6</label>
+        <input type="file" id="image6" accept="image/*" onchange="previewImage(event, 6)">
+        <label for="image7" class="image-label">Choose Image 7</label>
+        <input type="file" id="image7" accept="image/*" onchange="previewImage(event, 7)">
+        <label for="image8" class="image-label">Choose Image 8</label>
+        <input type="file" id="image8" accept="image/*" onchange="previewImage(event, 8)">
+        <label for="image9" class="image-label">Choose Image 9</label>
+        <input type="file" id="image9" accept="image/*" onchange="previewImage(event, 9)">
+        <label for="image10" class="image-label">Choose Image 10</label>
+        <input type="file" id="image10" accept="image/*" onchange="previewImage(event, 10)">
+        <label for="image11" class="image-label">Choose Image 11</label>
+        <input type="file" id="image11" accept="image/*" onchange="previewImage(event, 11)">
+        <label for="image12" class="image-label">Choose Image 12</label>
+        <input type="file" id="image12" accept="image/*" onchange="previewImage(event, 12)">
+    </div>
+
+    <!-- Displaying the grid of images -->
+    <div class="grid-container" id="grid-container"></div>
+
+    <script>
+        function previewImage(event, imageNum) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                img.classList.add('grid-item');
+                const gridContainer = document.getElementById('grid-container');
+               
+                // Only show 12 images (if user selects more than 12, ignore them)
+                if (gridContainer.children.length < 12) {
+                    gridContainer.appendChild(img);
+                }
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+</body>
+</html>
