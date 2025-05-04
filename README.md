@@ -13,3 +13,6 @@ The core gameplay mechanics of the game, agree to user building around their lis
 This game can be played multiple times, and can take users preference on building each gameplay which is an input. It'd be nice to have a storage facility offered to the user, during gameplay so that they don't have to submit until wanted.
 
 There's quests along the way, users follow a storyline through the entire completion.
+
+
+Prototype: Create a basic prototype to test the game's core features and mechanics
